@@ -1,0 +1,9 @@
+{
+  "name": "customized-react-app",
+  "version": "1.0.0",
+  "description": "customized react app",
+  "main": "index.js",
+  "repository": "https://github.com/LeeMoonki/customized-react-app.git",
+  "author": "LeeMoonki",
+  "license": "MIT"
+}
