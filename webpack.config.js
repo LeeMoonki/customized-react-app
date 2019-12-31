@@ -1,12 +1,21 @@
 const path = require('path');
 const webpack = require('webpack');
 
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
+const IS_DEV_SERVER = process.argv[1].indexOf('webpack-dev-server') >= 0;
+
+function getFilename(name) {
+  // https://github.com/webpack/webpack-dev-server/issues/438
+  return `[name].${IS_DEV_SERVER ? name : '[hash]'}.js`;
+}
+
 module.exports = {
-  entry: './src/index.js',
+  entry: './src/index.js', // If a string or array of strings is passed, the chunk is named 'main'.
   output: {
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/dist/',
-    filename: 'bundle.js',
+    filename: getFilename('bundle'), // when creating multiple bundles via more than one entry point, code splitting, or various plugins, you should use not a static name.
   },
   module: {
     rules: [
@@ -43,6 +52,12 @@ module.exports = {
     hotOnly: true
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
+    new HtmlWebpackPlugin({
+      meta: {
+        viewport: 'width=device-width, initial-scale=1'
+      },
+      title: 'React'
+    }),
   ]
 };
