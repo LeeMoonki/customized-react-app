@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {hot} from 'react-hot-loader/root';
 
-import Hello from './components/Hello';
+import Hello from 'Components/Hello';
 
 class App extends Component {
   render() {
