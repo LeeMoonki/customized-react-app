@@ -2,5 +2,5 @@
 
 module.exports = {
   testPathIgnorePatterns: ['/node_modules/'],
-  testRegex: '(/__tests__/.*)\\.[jt]sx?$'
+  testRegex: '(/__tests__/.*)\\.[jt]sx?$',
 };
