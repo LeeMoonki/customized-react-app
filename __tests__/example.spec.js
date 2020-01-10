@@ -5,7 +5,8 @@ function sum(a, b) {
 }
 
 describe('sum(a, b)', () => {
-  let a, b;
+  let a;
+  let b;
 
   beforeEach(() => {
     a = ~~(Math.random() * 10);
@@ -13,8 +14,6 @@ describe('sum(a, b)', () => {
   });
 
   test('sum with integers', () => {
-
-
     expect(sum(a, b)).toBe(a + b);
   });
 });

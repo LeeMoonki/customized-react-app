@@ -1,3 +1,23 @@
 {
-  "extends": ["airbnb", "airbnb/hooks"]
+  "extends": ["airbnb", "airbnb/hooks"],
+  "env": {
+    // https://eslint.org/docs/user-guide/configuring#specifying-environments
+    "browser": true,
+    "node": true
+  },
+  "rules": {
+    "no-bitwise": 0,
+    "import/extensions": 0,
+    "import/no-unresolved": 0,
+    "react/jsx-filename-extension": 0
+  },
+  "overrides": [
+    // https://eslint.org/docs/user-guide/configuring#disabling-rules-only-for-a-group-of-files
+    {
+      "files": ["*.test.js","*.spec.js"],
+      "rules": {
+        "no-undef": 0
+      }
+    }
+  ]
 }
