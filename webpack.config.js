@@ -18,6 +18,7 @@ module.exports = {
     filename: getFilename('bundle'), // when creating multiple bundles via more than one entry point, code splitting, or various plugins, you should use not a static name.
   },
   module: {
+    // use loaders on a rule: https://webpack.js.org/concepts/loaders/#configuration
     rules: [
       {
         test: /\.(js|jsx)$/,
@@ -38,13 +39,29 @@ module.exports = {
          */
         test: /\.css$/i,
         use: ['style-loader', 'css-loader'],
+        exclude: /\.module\.css$/
+      },
+      {
+        // https://blog.jakoblind.no/css-modules-webpack/
+        test: /\.css$/i,
+        use: [
+          { loader: 'style-loader' },
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true
+            }
+          },
+        ],
+        include: /\.module\.css$/
       }
     ]
   },
   resolve: {
     alias: {
       '@': path.resolve(__dirname, 'src'),
-      'Components': path.resolve(__dirname, 'src/components/')
+      'Components': path.resolve(__dirname, 'src/components/'),
+      'Css': path.resolve(__dirname, 'src/css')
     },
     extensions: ['*', '.js', '.jsx']
   },

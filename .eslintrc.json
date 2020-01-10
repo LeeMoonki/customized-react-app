@@ -14,9 +14,11 @@
   "overrides": [
     // https://eslint.org/docs/user-guide/configuring#disabling-rules-only-for-a-group-of-files
     {
-      "files": ["*.test.js","*.spec.js"],
+      "files": ["*.test.js","*.spec.js", "*.config.*"],
       "rules": {
-        "no-undef": 0
+        "no-undef": 0,
+        "quote-props": 0,
+        "comma-dangle": 0
       }
     }
   ]
