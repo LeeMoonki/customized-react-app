@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import 'Css/hello.css';
-import style from 'Css/hello.module.css';
+import 'Css/hello.scss';
+import style from 'Css/hello.module.scss';
 
 class HelloComponent extends Component {
   componentDidMount() {

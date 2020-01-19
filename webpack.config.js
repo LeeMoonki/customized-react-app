@@ -36,14 +36,15 @@ module.exports = {
         /**
          * style-loader : https://webpack.js.org/loaders/style-loader/
          * css-loader : https://webpack.js.org/loaders/css-loader/
+         * sass-loader : https://webpack.js.org/loaders/sass-loader/
          */
-        test: /\.css$/i,
-        use: ['style-loader', 'css-loader'],
-        exclude: /\.module\.css$/
+        test: /\.(s[ac]|c)ss$/i,
+        use: ['style-loader', 'css-loader', 'sass-loader'],
+        exclude: /\.module\.(s[ac]|c)ss$/
       },
       {
         // https://blog.jakoblind.no/css-modules-webpack/
-        test: /\.css$/i,
+        test: /\.(s[ac]|c)ss$/i,
         use: [
           { loader: 'style-loader' },
           {
@@ -52,8 +53,9 @@ module.exports = {
               modules: true
             }
           },
+          { loader: 'sass-loader' },
         ],
-        include: /\.module\.css$/
+        include: /\.module\.(s[ac]|c)ss$/
       }
     ]
   },
