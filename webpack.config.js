@@ -77,9 +77,12 @@ module.exports = {
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new HtmlWebpackPlugin({
+      // https://github.com/jantimon/html-webpack-plugin
+      // https://github.com/jaketrent/html-webpack-template
       meta: {
         viewport: 'width=device-width, initial-scale=1'
       },
+      template: 'src/index.template.ejs',
       title: 'React'
     }),
   ]
