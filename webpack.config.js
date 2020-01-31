@@ -39,7 +39,7 @@ module.exports = function (env, argv) {
             options: {
               // babel options : https://babeljs.io/docs/en/options
               presets: ['@babel/preset-env', '@babel/preset-react'],
-              plugins: ['react-hot-loader/babel']
+              plugins: ['react-hot-loader/babel', '@babel/plugin-syntax-dynamic-import']
             },
           },
         },
@@ -101,7 +101,9 @@ module.exports = function (env, argv) {
         template: 'src/index.template.ejs',
         title: 'React'
       }),
-      new MiniCssExtractPlugin()
+      new MiniCssExtractPlugin({
+        filename: '[name].[hash].css'
+      })
     ]
   };
 };
