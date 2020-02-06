@@ -25,8 +25,9 @@ module.exports = function (env, argv) {
     entry: './src/index.js', // If a string or array of strings is passed, the chunk is named 'main'.
     output: {
       path: path.resolve(__dirname, 'dist'),
-      publicPath: '/dist/',
+      publicPath: env.local ? './' : '/dist/',
       filename: getFilename('bundle'), // when creating multiple bundles via more than one entry point, code splitting, or various plugins, you should use not a static name.
+      chunkFilename: '[name].[hash].chunk.js',
     },
     module: {
       // use loaders on a rule: https://webpack.js.org/concepts/loaders/#configuration
