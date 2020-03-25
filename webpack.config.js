@@ -3,6 +3,7 @@ const webpack = require('webpack');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 const IS_DEV_SERVER = process.argv[1].indexOf('webpack-dev-server') >= 0;
 
@@ -25,7 +26,7 @@ module.exports = function (env, argv) {
     entry: './src/index.js', // If a string or array of strings is passed, the chunk is named 'main'.
     output: {
       path: path.resolve(__dirname, 'dist'),
-      publicPath: env.local ? './' : '/dist/',
+      publicPath: env && env.local ? './' : '/dist/',
       filename: getFilename('bundle'), // when creating multiple bundles via more than one entry point, code splitting, or various plugins, you should use not a static name.
       chunkFilename: '[name].[hash].chunk.js',
     },
@@ -92,6 +93,7 @@ module.exports = function (env, argv) {
       hotOnly: true
     },
     plugins: [
+      new CleanWebpackPlugin(),
       new webpack.HotModuleReplacementPlugin(),
       new HtmlWebpackPlugin({
         // https://github.com/jantimon/html-webpack-plugin
